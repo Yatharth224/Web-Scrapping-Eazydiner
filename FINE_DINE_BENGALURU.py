@@ -15,7 +15,7 @@ cookies = {
     'islive': '0',
     'userLocation': '%7B%22name%22%3A%22Bengaluru%22%2C%22code%22%3A%22bengaluru%22%7D',
 }
-
+#cookies are accordign to your cities
 headers = {
     'accept': '*/*',
     'accept-language': 'en-US,en;q=0.9',
