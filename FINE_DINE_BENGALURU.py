@@ -22,7 +22,7 @@ headers = {
     'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36',
     'x-nextjs-data': '1',
 }
-
+# headers are according to your city
 def extract_restaurants(json_data):
     try:
         items = json_data["pageProps"]["listingData"]["data"]["data"]
