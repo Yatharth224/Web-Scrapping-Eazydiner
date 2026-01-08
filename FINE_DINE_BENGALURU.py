@@ -3,7 +3,7 @@ import csv
 import os
 import time
 
-CITY = "bengaluru"
+CITY = "bengaluru" # city as your wish
 
 OUTPUT_FOLDER = "final_restro"
 OUTPUT_FILENAME = f"luxury_dining_{CITY}.csv"
