@@ -3,7 +3,7 @@ import csv
 import os
 import time
 
-CITY = "delhi"
+CITY = "delhi-ncr"
 
 OUTPUT_FOLDER = "final_restro"
 OUTPUT_FILENAME = f"luxury_dining_{CITY}.csv"
@@ -13,13 +13,13 @@ BASE_URL = "https://www.eazydiner.com/_next/data/SnHMuiMhd83orLphAebIU/en/restau
 
 cookies = {
     'islive': '0',
-    'userLocation': '%7B%22name%22%3A%22Delhi%22%2C%22code%22%3A%22delhi%22%7D',
+    'userLocation': '%7B%22name%22%3A%22Delhi%20NCR%22%2C%22code%22%3A%22delhi-ncr%22%2C%22city_code%22%3A%22delhi-ncr%22%2C%22city_name%22%3A%22Delhi%20NCR%22%7D',
 }
 
 headers = {
     'accept': '*/*',
     'accept-language': 'en-US,en;q=0.9',
-    'referer': 'https://www.eazydiner.com/restaurants?location=delhi',
+    'referer': 'https://www.eazydiner.com/restaurants?location=delhi-ncr&categories%5B%5D=luxury-dining',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-origin',
     'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36',
@@ -36,7 +36,8 @@ def extract_restaurants(json_data):
 
     for item in items:
         images = []
-        for key in ["gallery", "photos", "image"]:
+
+        for key in ["gallery", "photos", "image", "album_img", "photo_gallery"]:
             val = item.get(key)
             if isinstance(val, list):
                 images.extend(val)
@@ -78,6 +79,7 @@ while True:
         break
 
     rows = extract_restaurants(json_data)
+
     if not rows:
         break
 
@@ -107,4 +109,4 @@ with open(FULL_PATH, "w", newline="", encoding="utf-8") as f:
         row.extend([""] * (max_images - len(r["images"])))
         writer.writerow(row)
 
-print(f"✅ Saved {len(all_rows)} Delhi luxury restaurants to {FULL_PATH}")
+print(f"✅ Saved {len(all_rows)} Delhi NCR luxury restaurants to {FULL_PATH}")
