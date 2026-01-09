@@ -3,13 +3,17 @@ import csv
 import os
 import time
 
-CITY = "mumbai"
+CITY = "mumbai"  # you can choose city as you wish 
 
 OUTPUT_FOLDER = "final_restro"
 OUTPUT_FILENAME = f"luxury_dining_{CITY}.csv"
 FULL_PATH = os.path.join(OUTPUT_FOLDER, OUTPUT_FILENAME)
 
 BASE_URL = "https://www.eazydiner.com/_next/data/SnHMuiMhd83orLphAebIU/en/restaurants.json"
+
+
+# change cookies and header according to city
+
 
 cookies = {
     'islive': '0',
